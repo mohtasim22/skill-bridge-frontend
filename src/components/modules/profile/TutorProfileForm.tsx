@@ -68,7 +68,6 @@ export default function TutorProfileForm({ user, tutor: tutorData }: { user: any
     }
   };
 
-  ///////////////////////////////////////////////////////////////
   
   const [tutor, setTutor] = useState<TutorProfile>({
     display_name: tutorData?.display_name ?? "",
