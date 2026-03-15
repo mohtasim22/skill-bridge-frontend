@@ -1,4 +1,4 @@
-// components/modules/admin/AdminTutorsPage.tsx
+
 "use client"
 
 import { useState } from "react"
