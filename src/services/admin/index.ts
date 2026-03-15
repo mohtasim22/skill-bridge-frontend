@@ -26,6 +26,7 @@ export const getAllUsers = async () => {
   return result
 }
 
+
 export const updateUserStatus = async (userId: string, status: string) => {
   const token = await getToken()
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/admin/users/${userId}/status`, {
@@ -104,6 +105,7 @@ export const adminDeleteReview = async (reviewId: string) => {
   })
   return res.json()
 }
+
 
 export const verifyTutor = async (tutorId: string, is_verified: boolean) => {
   const token = await getToken()
