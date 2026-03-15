@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { FieldValues } from "react-hook-form";
 
-// services/auth/index.ts
+
 export const registerUser = async (payload: {
   name: string
   email: string
@@ -63,13 +63,12 @@ export const updateUserProfile = async (updatedData: { name?: string; email?: st
         Authorization: `${token}`,
       },
       body: JSON.stringify(updatedData),
-      // Disable caching to ensure fresh data
+      
     });
 
     const result = await res.json();
 
     if (result.status === "success") {
-      // ✅ re-sign token with updated user data
       const secret = new TextEncoder().encode(process.env.JWT_SECRET!);
       const newToken = await new SignJWT({
         id: result.user.id,
@@ -82,7 +81,7 @@ export const updateUserProfile = async (updatedData: { name?: string; email?: st
         .setExpirationTime("7d")
         .sign(secret);
 
-      storeCookie.set("token", newToken); // ✅ replace old token
+      storeCookie.set("token", newToken); 
       revalidatePath("/dashboard/profile");
     }
 
