@@ -1,4 +1,4 @@
-// components/shared/Footer.tsx
+
 import Link from "next/link"
 import { BookOpen } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
