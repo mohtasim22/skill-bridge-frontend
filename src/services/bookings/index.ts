@@ -1,8 +1,6 @@
-// services/bookings/index.ts
 "use server"
 
 import { cookies } from "next/headers"
-
 
 export const createBooking = async (payload: {
   course_slot_id: string
