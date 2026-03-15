@@ -68,7 +68,6 @@ interface Props {
     bookings: Booking[]
 }
 
-// Star Rating Component
 const StarRating = ({
     value,
     onChange,
@@ -84,8 +83,8 @@ const StarRating = ({
                 <Star
                     key={star}
                     className={`h-6 w-6 cursor-pointer transition-colors ${star <= (hovered || value)
-                            ? "text-yellow-400 fill-yellow-400"
-                            : "text-muted-foreground"
+                        ? "text-yellow-400 fill-yellow-400"
+                        : "text-muted-foreground"
                         }`}
                     onMouseEnter={() => setHovered(star)}
                     onMouseLeave={() => setHovered(0)}
@@ -103,8 +102,8 @@ const DisplayStars = ({ rating }: { rating: number }) => (
             <Star
                 key={star}
                 className={`h-4 w-4 ${star <= rating
-                        ? "text-yellow-400 fill-yellow-400"
-                        : "text-muted-foreground"
+                    ? "text-yellow-400 fill-yellow-400"
+                    : "text-muted-foreground"
                     }`}
             />
         ))}
@@ -119,13 +118,13 @@ export default function StudentBookingHistoryPage({ bookings }: Props) {
     const [open, setOpen] = useState(false)
 
     const form = useForm<ReviewFormValues>({
-  defaultValues: {
-    rating: 0,
-    comment: "",
-  },
-  // ✅ add validation
-  resolver: undefined, // or use zodResolver if you have zod
-})
+        defaultValues: {
+            rating: 0,
+            comment: "",
+        },
+
+        resolver: undefined,
+    })
 
     const openReviewDialog = (booking: Booking, editing = false) => {
         setActiveBooking(booking)
@@ -347,7 +346,7 @@ export default function StudentBookingHistoryPage({ bookings }: Props) {
                                                 maxLength={150}
                                             />
                                         </FormControl>
-                                        {/* ✅ character counter */}
+                                        {/*  */}
                                         <p className="text-xs text-muted-foreground text-right">
                                             {field.value?.length ?? 0}/150
                                         </p>

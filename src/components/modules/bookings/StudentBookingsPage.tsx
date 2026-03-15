@@ -40,7 +40,7 @@ interface Props {
   bookings: Booking[]
 }
 
-const statusVariant: Record< // ✅ fixed missing 
+const statusVariant: Record< 
   Booking["booking_status"],
   "default" | "secondary" | "destructive" | "outline"
 > = {
