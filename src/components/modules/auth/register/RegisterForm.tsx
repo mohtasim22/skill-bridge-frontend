@@ -1,4 +1,4 @@
-// components/modules/auth/register/RegisterForm.tsx
+
 "use client"
 
 import { useState } from "react"
