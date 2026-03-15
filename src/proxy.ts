@@ -5,7 +5,6 @@ import { getUser } from "./services/auth";
 const ALLOWED_ROLE = ["STUDENT", "ADMIN", "TUTOR"];
 const PUBLIC_ROUTE = ["/login", "/register"];
 
-// This function can be marked `async` if using `await` inside
 export default async function proxy(request: NextRequest) {
   const { pathname, origin } = request.nextUrl;
   const user = await getUser();
@@ -29,8 +28,6 @@ export default async function proxy(request: NextRequest) {
   return NextResponse.next();
 }
 
-// Alternatively, you can use a default export:
-// export default function proxy(request: NextRequest) { ... }
 
 export const config = {
   matcher: ["/dashboard/:path*"]
