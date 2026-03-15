@@ -60,7 +60,6 @@ export const updateSlot = async (slotId: string, payload: Partial<{
     ...(payload.meeting_link && { meeting_link: payload.meeting_link }),
     ...(payload.course_id && { course_id: payload.course_id }),
     ...(payload.date && { date: new Date(payload.date).toISOString() }),
-    // only format times if both date and time are provided
     ...(payload.date && payload.start_time && {
       start_time: formatDateTime(payload.date, payload.start_time),
     }),
