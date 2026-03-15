@@ -1,4 +1,4 @@
-// components/modules/tutors/TutorsClient.tsx
+
 "use client"
 
 import { useState } from "react"
@@ -32,7 +32,7 @@ export default function TutorsClient({ tutors }: { tutors: Tutor[] }) {
   const [ratingFilter, setRatingFilter] = useState("ALL")
   const [courseFilter, setCourseFilter] = useState("ALL")
 
-  // get unique course names from all tutors
+  
   const allCourses = Array.from(
     new Set(
       tutors.flatMap((t) => t.courses?.map((c) => c.name) ?? [])
@@ -42,19 +42,19 @@ export default function TutorsClient({ tutors }: { tutors: Tutor[] }) {
   const filtered = tutors.filter((tutor) => {
     const q = query.toLowerCase()
 
-    // search filter
+    
     const matchesSearch =
       !q ||
       tutor.display_name.toLowerCase().includes(q) ||
       tutor.courses?.some((c) => c.name.toLowerCase().includes(q)) ||
       tutor.slots?.some((s) => s.name.toLowerCase().includes(q))
 
-    // rating filter
+    
     const matchesRating =
       ratingFilter === "ALL" ||
       tutor.rating_avg >= parseInt(ratingFilter)
 
-    // course filter
+    
     const matchesCourse =
       courseFilter === "ALL" ||
       tutor.courses?.some((c) => c.name === courseFilter)
