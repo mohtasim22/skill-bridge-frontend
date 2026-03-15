@@ -1,4 +1,4 @@
-// components/modules/courseSlots/CourseSlotsClient.tsx
+
 "use client"
 
 import { useState } from "react"
