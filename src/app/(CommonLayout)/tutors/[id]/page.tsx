@@ -9,6 +9,7 @@ import { getTutorProfile } from "@/services/tutor";
 import { getAllCoursesByTutorId } from "@/services/course";
 import { getSlotByTutor } from "@/services/courseSlots";
 import { getPublicTutorReviews, getTutorReviewsById } from "@/services/reviews";
+import BookSlotButton from "@/components/modules/tutors/BookSlotButton";
 
 const DisplayStars = ({ rating }: { rating: number }) => (
   <div className="flex gap-0.5">
@@ -198,9 +199,7 @@ export default async function TutorDetailsPage({
                   {new Date(slot.start_time).toLocaleTimeString()} —{" "}
                   {new Date(slot.end_time).toLocaleTimeString()}
                 </p>
-                <Button asChild size="sm" className="mt-2">
-                  <Link href={`/course-slots/${slot.id}`}>Book Slot</Link>
-                </Button>
+                <BookSlotButton slotId={slot.id} />
                 <Separator className="mt-3" />
               </div>
             ))}

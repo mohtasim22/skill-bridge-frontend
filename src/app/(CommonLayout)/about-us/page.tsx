@@ -131,36 +131,6 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* Team */}
-      {/* <section className="py-16 px-4 border-b">
-        <div className="max-w-3xl mx-auto space-y-10">
-          <div className="text-center space-y-2">
-            <h2 className="text-2xl font-bold">Meet the team</h2>
-            <p className="text-sm text-muted-foreground">
-              The people behind SkillBridge
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {team.map(({ name, role, bio, initials }) => (
-              <Card key={name} className="shadow-none">
-                <CardContent className="pt-6 space-y-4 text-center">
-                  <Avatar className="h-16 w-16 mx-auto">
-                    <AvatarFallback className="text-lg font-semibold">
-                      {initials}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="space-y-1">
-                    <h3 className="font-semibold">{name}</h3>
-                    <Badge variant="secondary" className="text-xs">{role}</Badge>
-                  </div>
-                  <p className="text-sm text-muted-foreground">{bio}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
       {/* CTA */}
       <section className="py-24 px-4 text-center space-y-6">
         <h2 className="text-2xl font-bold">Join SkillBridge today</h2>

@@ -19,7 +19,7 @@ export const getAllTutors = async () => {
     return result;
 
   } catch (error) {
-    console.log(error);
+    return { tutor: [] }
   }
 };
 

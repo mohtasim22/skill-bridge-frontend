@@ -6,13 +6,20 @@ import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Star, BookOpen, Users, Clock, ArrowRight, CheckCircle } from "lucide-react"
 import { getAllTutors } from "@/services/tutor"
+export const dynamic = "force-dynamic"
 
 export default async function HomePage() {
-  const { tutor } = await getAllTutors()
+  let featuredTutors: any[] = []
 
-  const featuredTutors = tutor
-  ?.sort((a: any, b: any) => b.rating_avg - a.rating_avg)
-  .slice(0, 3) ?? []
+  try {
+    const data = await getAllTutors()
+    const tutors = data?.tutor ?? data?.tutors ?? []
+    featuredTutors = tutors
+      .sort((a: any, b: any) => b.rating_avg - a.rating_avg)
+      .slice(0, 3)
+  } catch {
+    featuredTutors = []
+  }
 
   return (
     <div className="min-h-screen">
@@ -42,7 +49,7 @@ export default async function HomePage() {
       <section className="py-16 px-4 border-b">
         <div className="max-w-3xl mx-auto grid grid-cols-3 gap-8 text-center">
           <div className="space-y-1">
-            <div className="text-3xl font-bold">{tutor?.length ?? 0}+</div>
+            <div className="text-3xl font-bold">{featuredTutors?.length ?? 0}+</div>
             <p className="text-sm text-muted-foreground">Expert Tutors</p>
           </div>
           <div className="space-y-1">

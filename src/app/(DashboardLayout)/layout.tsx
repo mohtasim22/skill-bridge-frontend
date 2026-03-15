@@ -1,12 +1,5 @@
 import { AppSidebar } from "@/components/app-sidebar"
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
+
 import { Separator } from "@/components/ui/separator"
 import {
     SidebarInset,
@@ -14,7 +7,8 @@ import {
     SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { getUser } from "@/services/auth"
-
+// app/(DashboardLayout)/layout.tsx
+export const dynamic = "force-dynamic"
 export default async function DashboardLayout({
     admin,
     student,
