@@ -7,7 +7,5 @@ export default async function AdminBookingsRoute() {
   const user = await getUser()
   const bookings = await getBookings()
 
-  
-
   return <TutorBookingsPage initialBookings={bookings ?? []} />
 }
