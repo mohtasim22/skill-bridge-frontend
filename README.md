@@ -4,7 +4,7 @@ A modern tutoring platform frontend built with Next.js 16, TypeScript, Tailwind 
 
 ## 🔗 Live App
 
-**Frontend:** `https://skill-bridge-frontend.vercel.app`
+**Frontend:** `https://skill-bridge-frontend-ecru.vercel.app/`
 **Backend API:** `https://skill-bridge-backend-kappa.vercel.app/api/v1`
 
 ## 🛠 Tech Stack
