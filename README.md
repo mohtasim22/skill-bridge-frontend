@@ -1,36 +1,179 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SkillBridge Frontend
 
-## Getting Started
+A modern tutoring platform frontend built with Next.js 16, TypeScript, Tailwind CSS, and shadcn/ui. Connect students with verified tutors for one-on-one learning sessions.
 
-First, run the development server:
+## 🔗 Live App
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**Frontend:** `https://skill-bridge-frontend.vercel.app`
+**Backend API:** `https://skill-bridge-backend-kappa.vercel.app/api/v1`
+
+## 🛠 Tech Stack
+
+- **Framework:** Next.js 16.1.6 (App Router + Turbopack)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4
+- **UI Components:** shadcn/ui
+- **Forms:** React Hook Form + Zod
+- **Notifications:** Sonner
+- **Theme:** next-themes (Dark/Light mode)
+- **Authentication:** JWT stored in cookies
+- **Deployment:** Vercel
+
+## 📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── (CommonLayout)/          → Public routes
+│   │   ├── page.tsx             → Home
+│   │   ├── tutors/              → Tutors listing & details
+│   │   ├── course-slots/        → Course slots listing & details
+│   │   ├── about-us/            → About page
+│   │   ├── login/               → Login page
+│   │   └── register/            → Register + Tutor profile setup
+│   ├── (DashboardLayout)/       → Protected dashboard routes
+│   │   ├── @admin/dashboard/    → Admin parallel slot
+│   │   ├── @student/dashboard/  → Student parallel slot
+│   │   └── @tutor/dashboard/    → Tutor parallel slot
+│   └── proxy.ts                 → Next.js 16 middleware
+├── components/
+│   ├── modules/                 → Feature-specific components
+│   │   ├── auth/                → Login & Register forms
+│   │   ├── admin/               → Admin management pages
+│   │   ├── bookings/            → Booking components
+│   │   ├── courseSlots/         → Slot management
+│   │   ├── courses/             → Course management
+│   │   ├── profile/             → Profile forms
+│   │   ├── reviews/             → Review components
+│   │   └── tutors/              → Tutor cards & details
+│   ├── shared/                  → Navbar, Footer, ThemeToggle
+│   └── ui/                      → shadcn/ui components
+└── services/                    → API service functions
+    ├── auth/
+    ├── bookings/
+    ├── course/
+    ├── courseSlots/
+    ├── reviews/
+    └── tutor/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 👥 User Roles & Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🎓 Student
+- Browse and search tutors and course slots
+- Book course slots
+- View and manage bookings
+- Leave, edit, and delete reviews on completed sessions
+- View booking history
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 📚 Tutor
+- Create and manage courses
+- Create, edit, and delete course slots
+- Manage booking requests (confirm/cancel/complete)
+- View ratings and reviews
+- Edit tutor profile
 
-## Learn More
+### 🛡 Admin
+- Manage all users (activate/deactivate)
+- Verify/unverify tutors
+- Manage all bookings
+- Manage all courses (edit/delete)
+- Manage all reviews (approve/reject/delete)
+- View platform statistics
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Getting Started
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Prerequisites
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Node.js 18+
+- Backend API running (see [skill-bridge-backend](https://github.com/mohtasim22/skill-bridge-backend))
 
-## Deploy on Vercel
+### Installation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# Clone the repository
+git clone https://github.com/mohtasim22/skill-bridge-frontend.git
+cd skill-bridge-frontend
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Install dependencies
+npm install
+```
+
+### Environment Variables
+
+Create a `.env.local` file in the root:
+
+```env
+NEXT_PUBLIC_BASE_URL=http://localhost:5000/api/v1
+JWT_SECRET=your_jwt_secret_key
+```
+
+### Run Locally
+
+```bash
+# Development
+npm run dev
+
+# Production build
+npm run build
+npm run start
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 📄 Pages
+
+| Route | Description | Access |
+|-------|-------------|--------|
+| `/` | Home page with featured tutors | Public |
+| `/tutors` | Browse & filter all tutors | Public |
+| `/tutors/[id]` | Tutor profile with reviews & slots | Public |
+| `/course-slots` | Browse & search all course slots | Public |
+| `/course-slots/[id]` | Course slot details & booking | Auth |
+| `/about-us` | About SkillBridge | Public |
+| `/login` | Login page | Public |
+| `/register` | Register as student or tutor | Public |
+| `/register/tutor-profile` | Tutor profile setup after register | Public |
+| `/dashboard` | Role-based dashboard | Auth |
+| `/dashboard/bookings` | Manage bookings | Auth |
+| `/dashboard/booking-history` | Booking history & reviews | Student |
+| `/dashboard/slots` | Manage course slots | Tutor |
+| `/dashboard/courses` | Manage courses | Tutor |
+| `/dashboard/reviews` | Reviews & ratings | Tutor/Admin |
+| `/dashboard/profile` | Profile settings | Auth |
+| `/dashboard/users` | Manage users | Admin |
+| `/dashboard/tutors` | Verify tutors | Admin |
+
+## 🎨 Features
+
+- **Dark/Light mode** — system preference + manual toggle
+- **Responsive design** — mobile-first with collapsible sidebar
+- **Search & filters** — search tutors and slots by name, course, rating
+- **Real-time updates** — optimistic UI updates without page refresh
+- **Loading skeletons** — smooth loading states for all pages
+- **Toast notifications** — success/error feedback via Sonner
+- **Protected routes** — JWT-based middleware for dashboard access
+- **Redirect after login** — preserves intended destination
+
+## 🚢 Deployment
+
+### Deploy to Vercel
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel --prod
+```
+
+### Required Environment Variables on Vercel
+
+```
+NEXT_PUBLIC_BASE_URL=https://your-backend.vercel.app/api/v1
+JWT_SECRET=your_jwt_secret_key
+```
+
+## 👤 Author
+
+**Mohtasim** — [github.com/mohtasim22](https://github.com/mohtasim22)
